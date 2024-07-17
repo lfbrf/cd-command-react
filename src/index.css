@@ -1,0 +1,40 @@
+/* index.css */
+.App {
+    text-align: center;
+  }
+  
+  .login-form, .register-form, .terminal {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 700px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-form h2, .register-form h2, .terminal h2 {
+    margin-bottom: 20px;
+  }
+  
+  .login-form form, .register-form form, .terminal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-form input, .register-form input, .terminal input, .login-form button, .register-form button, .terminal button {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .terminal-output {
+    min-height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .terminal-screen pre {
+    text-align: center;
+  }
+  
+  
