@@ -13,6 +13,7 @@ const Register = () => {
       
       if (response.status === 201) {
         alert('User registered successfully!');
+        window.location.href = '/';
         // Optionally redirect or perform other actions upon successful registration
       } else {
         // Handle other status codes, e.g., display error message
@@ -37,7 +38,10 @@ const Register = () => {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
         <br />
+        <br />
+        <div class='register-btn'>
         <button type="submit">Register</button>
+        </div>
       </form>
     </div>
   );
