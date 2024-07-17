@@ -69,3 +69,46 @@
 .prompt {
     color: #50fa7b; /* Green color for the terminal prompt */
 }
+
+.terminal-screen {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.terminal-screen pre {
+    margin: 0;
+}
+
+.terminal-screen div {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.terminal-screen span {
+    font-weight: bold;
+    margin-right: 5px; /* Adjust margin for spacing */
+}
+
+.terminal-screen form {
+    flex: 1; /* Take remaining width */
+}
+
+.terminal-screen input {
+    width: calc(100% - 20px); /* Adjust input width */
+    padding: 8px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    outline: none;
+}
+
+.terminal-screen input:focus {
+    border: 1px solid #007bff;
+}
