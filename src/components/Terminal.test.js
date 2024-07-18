@@ -257,6 +257,60 @@ describe('Terminal Component', () => {
   
     jest.restoreAllMocks();
   });
-  
+  test('Handling commands with special characters', async () => {
+  const command = 'ls -l | grep file';
+
+  axios.get.mockResolvedValueOnce({ status: 200, data: { cwd: '/home/user' } });
+  axios.get.mockResolvedValueOnce({ status: 200, data: { ls: 'file1 file2' } });
+
+  render(<Terminal token={token} />);
+
+  const inputField = screen.getByRole('textbox');
+  fireEvent.change(inputField, { target: { value: command } });
+  fireEvent.submit(inputField.closest('form'));
+
+  const terminalOutput = await screen.findByTestId('terminal-output');
+  expect(terminalOutput.textContent.trim()).toContain('file1 file2');
+
+  jest.restoreAllMocks();
+});
+
+test('Handling commands with incorrect parameters', async () => {
+  const command = 'ls -invalidparam';
+
+  axios.get.mockResolvedValueOnce({ status: 200, data: { cwd: '/home/user' } });
+  axios.get.mockRejectedValueOnce({ response: { status: 400, data: { error: 'Invalid parameter' } } });
+
+  render(<Terminal token={token} />);
+
+  const inputField = screen.getByRole('textbox');
+  fireEvent.change(inputField, { target: { value: command } });
+  fireEvent.submit(inputField.closest('form'));
+
+  const terminalOutput = await screen.findByTestId('terminal-output');
+  expect(terminalOutput.textContent.trim()).toContain('Invalid parameter');
+
+  jest.restoreAllMocks();
+});
+
+test('Handling very long command output', async () => {
+  const command = 'ls -l /long/directory/path';
+
+  const longOutput = Array.from({ length: 100 }, (_, i) => `file${i}`).join(' ');
+
+  axios.get.mockResolvedValueOnce({ status: 200, data: { cwd: '/home/user' } });
+  axios.get.mockResolvedValueOnce({ status: 200, data: { ls: longOutput } });
+
+  render(<Terminal token={token} />);
+
+  const inputField = screen.getByRole('textbox');
+  fireEvent.change(inputField, { target: { value: command } });
+  fireEvent.submit(inputField.closest('form'));
+
+  const terminalOutput = await screen.findByTestId('terminal-output');
+  expect(terminalOutput.textContent.trim()).toContain(`file99`); // Check for a part of the long output
+
+  jest.restoreAllMocks();
+});
 
 });
