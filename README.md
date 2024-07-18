@@ -1,18 +1,20 @@
-# Welcome to FE part of cd terminal. This component is responsible to render a terminal for authenticated users. Also, includes unit tests for important features
+# Welcome to frontend (FE) part of cd terminal.
+
+## This component is responsible to render a terminal for authenticated users. Also, includes unit tests for important features
 
 ### Steps to run app
 
 ### Change port of proxy in package.json to match your running backend application. If you run BE first you could probably skip this step. Default to 3000
-Default setting: "proxy": "http://localhost:3000"
+Default setting: ``` "proxy": "http://localhost:3000" ```
 
 ### Install dependencies
-npm install
+```bash npm install ```
 
 ### Run app
-npm run start
+```bash npm run start ```
 
 ### Run unit tests
-npm run test
+```bash npm run test ```
 
 ### Main features
 - Basic register page for user (http://localhost:4000/register) 
@@ -30,3 +32,5 @@ npm run test
 - Improve interface to resemble a real terminal
 - Add mkdir feature
 - Once mkdir is implemented, adjust ls command to properly handle file hierarchies
+
+![image](https://github.com/user-attachments/assets/b1193019-6b1b-49c0-a71a-18618ce34ed1)
